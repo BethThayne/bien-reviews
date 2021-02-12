@@ -17,14 +17,21 @@ end
 
 
 def create
-    # take info from form and add to database
+    # take info from form and add to model
     @review = Review.new(form_params)
 
-    # save info to database
-    @review.save
+    # check if model can be saved
+    # if it can, return to home page
+    # if it can't, show new form
 
-    # redirect back to homepage
-    redirect_to root_path
+    if @review.save
+        redirect_to root_path
+    else
+        # show view for new.html.erb
+        render "new"
+    end
+
+
 end
 
 
@@ -56,15 +63,19 @@ def update
     @review = Review.find(params[:id])
 
     # update with new info from form
-    @review.update(form_params)
+    if @review.update(form_params)
 
     # redirect
-    redirect_to review_path
+    redirect_to review_path(@review)
+    else
+        render "edit"
+    end
 end
 
 def form_params
     params.require(:review).permit(:title, :body, :score)
 
 end
+
 
 end
