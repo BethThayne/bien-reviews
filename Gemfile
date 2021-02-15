@@ -26,6 +26,9 @@ gem 'jbuilder', '~> 2.7'
 # add in geocoder
 gem 'geocoder'
 
+# add in simple_form
+gem 'simple_form'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
