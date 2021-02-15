@@ -20,9 +20,15 @@
     </p>
 
     <p>
-        <%= f.label :restaurant%>
+        <%= f.label :restaurant %>
         <%= f.text_field :restaurant %>
     </p>
+
+    <p>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    </p>
+
 
     <p>
     <%= f.label :body %>
@@ -30,13 +36,23 @@
     </p>
 
     <p>
-    <%=f.label :score %>
+    <%= f.label :score %>
     <%= f.number_field :score %>
     </p>
 
     <p>
-    <%=f.label :ambience %>
+    <%= f.label :ambience %>
     <%= f.text_field :ambience %>
+    </p>
+
+    <p>
+    <%=f.label :price %>
+    <%= f.number_field :price %>
+    </p>
+
+    <p>
+    <%=f.label :cuisine %>
+    <%= f.text_field :cuisine %>
     </p>
 
     <%= f.submit "Save review" %>

@@ -7,15 +7,27 @@
 <%= @review.score %> /10
 </div>
 
+<div class="price">
+Price: <%= @review.price %> /4
+</div>
+
 <% if @review.ambience.present? %>
     <div class="ambience">
     Ambience: <%= @review.ambience %>
     </div>
 <% end %>
 
+<% if @review.cuisine.present? %>
+    <div class="cuisine">
+    Cuisine: <%= @review.cuisine %>
+    </div>
+<% end %>
+
 <div class="body">
 <%= simple_format @review.body %>
 </div>
+
+
 
 
 <div class="actions">
