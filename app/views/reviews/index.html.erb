@@ -42,7 +42,7 @@
         <%= link_to review_path(review) do %>
             <h2><%= review.title %></h2>
             <p><%= review.cuisine %> -
-            <%= pluzarilze review.comments.count, "comment" %>
+            <%= pluralize review.comments.count, "comment" %>
              </p>
 
 
