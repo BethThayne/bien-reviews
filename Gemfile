@@ -5,8 +5,17 @@ ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
+
 # Use sqlite3 as the database for Active Record
+group :development do
 gem 'sqlite3', '~> 1.4'
+end
+
+# Use pg on production
+group :production do
+gem 'pg'
+end
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -28,6 +37,9 @@ gem 'geocoder'
 
 # add in simple_form
 gem 'simple_form'
+
+# add in active_link_to
+gem 'active_link_to'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -61,3 +73,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+ruby "3.0.0"

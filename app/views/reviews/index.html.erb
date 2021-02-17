@@ -3,20 +3,20 @@
 
 
 <nav class="filters">
-<%= link_to "All restaurants", root_path %>
+<%= active_link_to "All restaurants", root_path, active: { price: nil, cuisine: nil, location: nil } %>
 
 <div>
-<%= link_to "€", root_path(price: 1, cuisine: @cuisine, location: @location) %>
-<%= link_to "€€", root_path(price: 2, cuisine: @cuisine, location: @location) %>
-<%= link_to "€€€", root_path(price: 3, cuisine: @cuisine, location: @location) %>
-<%= link_to "€€€€", root_path(price: 4, cuisine: @cuisine, location: @location) %>
+<%= active_link_to "€", root_path(price: 1, cuisine: @cuisine, location: @location), active: { price: 1 } %>
+<%= active_link_to "€€", root_path(price: 2, cuisine: @cuisine, location: @location), active: { price: 2 }  %>
+<%= active_link_to "€€€", root_path(price: 3, cuisine: @cuisine, location: @location), active: { price: 3 }  %>
+<%= active_link_to "€€€€", root_path(price: 4, cuisine: @cuisine, location: @location), active: { price: 4 }  %>
 </div>
 
 <div>
-<%= link_to "European", root_path(cuisine: "European", price: @price, location: @location) %>
-<%= link_to "Peruvian", root_path(cuisine: "Peruvian", price: @price, location: @location) %>
-<%= link_to "Pizza", root_path(cuisine: "Pizza", price: @price, location: @location) %>
-<%= link_to "Vegetarian/Vegan", root_path(cuisine: "Vegetarian/Vegan", price: @price, location: @location) %>
+<%= active_link_to "European", root_path(cuisine: "European", price: @price, location: @location), active: { cuisine: "European" } %>
+<%= active_link_to "Peruvian", root_path(cuisine: "Peruvian", price: @price, location: @location), active: { cuisine: "Peruvian" }  %>
+<%= active_link_to "Pizza", root_path(cuisine: "Pizza", price: @price, location: @location), active: { cuisine: "Pizza" }  %>
+<%= active_link_to "Vegetarian/Vegan", root_path(cuisine: "Vegetarian/Vegan", price: @price, location: @location), active: { cuisine: "Vegetarian/Vegan" }  %>
 </div>
 
 <form action="/">
@@ -31,12 +31,23 @@
 </nav>
 
 
+
+
+
+
 <% @reviews.each do |review| %>
 
 
     <div class="review">
-        <%= link_to review.title, review_path(review) %>
+        <%= link_to review_path(review) do %>
+            <h2><%= review.title %></h2>
+            <p><%= review.cuisine %> -
+            <%= pluzarilze review.comments.count, "comment" %>
+             </p>
 
+
+
+            <% end %>
     </div>
 <% end %>
 
