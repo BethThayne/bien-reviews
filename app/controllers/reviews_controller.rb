@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
 
+    #check if logged in
+
+    before_action :check_login, except: [:index, :show]
+
 def index 
 
     @price = params[:price]
@@ -44,6 +48,10 @@ def create
     # take info from form and add to model
     @review = Review.new(form_params)
 
+    # then add it to a user
+
+    @review.user = @current_user
+
     # check if model can be saved
     # if it can, return to home page
     # if it can't, show new form
@@ -69,7 +77,9 @@ def destroy
     @review = Review.find(params[:id])
 
     # destroy
+ if @review.user == @current_user
     @review.destroy
+ end
 
     # redirect to homepage
     redirect_to root_path
@@ -80,26 +90,36 @@ def edit
     # find individual review to edit
     @review = Review.find(params[:id])
 
+    if @review.user != @current_user
+        redirect_to root_path
+    end
+
 end
 
 def update
     # find individual review to edit
     @review = Review.find(params[:id])
 
-    # update with new info from form
-    if @review.update(form_params)
+    if @review.user != curent_user
+        redirect_to root_path
+    else 
+         # update with new info from form
+        if @review.update(form_params)
 
-    # redirect
-    redirect_to review_path(@review)
-    else
-        render "edit"
+        # redirect
+        redirect_to review_path(@review)
+        else
+            render "edit"
+        end
     end
+
+   
 end
 
-def form_params
+    def form_params
     params.require(:review).permit(:title, :restaurant, :body, :score, :price, :cuisine,  :ambience, :address)
 
-end
+    end
 
 
 end

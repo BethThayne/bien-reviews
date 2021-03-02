@@ -43,5 +43,37 @@ What is a review?\
 - Add geolocation\
 - Add comments\
 \
+- If a user (logged in or logged out) creates a comment that contains a swear word\
+- then replace vowels with %$% (profanity_filter)\
+\
+- When someone creates a new comment, for.each word, check against list of swear words (from profanity_filter)\
+- If comment contains swear word, replace vowels of swear word with %%% (profanity_filter)\
+\
+\
+\
+Week 3\
+- user: sign up\
+- user; login\
+- show we are logged in\
+- user: logout\
+- hooking up reviews and comments to users\
+- authorisation\
+- bookmarking/favouriting\
+\
+\
+Review could have 1:many comments\
+User has 1:many reviews\
+User has 1:many comments\
+\
+What is a user?\
+- username (unique, required)\
+- email (unique, required)\
+- password_digest (has_secure_password)\
+- real_name\
+\
+Session\
+\
+\
+\
 \
 }
