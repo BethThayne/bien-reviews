@@ -37,7 +37,7 @@ end
     end
 
     def destroy
-        # log us out - remove session completely
+        # log out - remove session completely
         reset_session
 
         # redirect to login page

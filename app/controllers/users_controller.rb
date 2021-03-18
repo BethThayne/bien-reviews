@@ -23,7 +23,7 @@ def create
        if @user.save
 
         # save session with user
-        session[:user_id] = @user.index
+        session[:user_id] = @user.id
         
       
        redirect_to users_path
